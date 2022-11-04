@@ -25,10 +25,8 @@ namespace EasyGizmos
             EditorGUILayout.Space(7);
             DrawShapeProperties();
 
-            // Text Properties
-            // Icon Properties
-            // Line Properties
-            // Frustum Properties
+            EditorGUILayout.Space(7);
+            DrawTextProperties();
         }
 
         private void DrawGeneralProperties()
@@ -63,6 +61,7 @@ namespace EasyGizmos
             var shapeColor = serializedObject.FindProperty("shapeColor");
             var shapeOffset = serializedObject.FindProperty("shapeOffset");
 
+            bool showShapeValue = showShape.boolValue;
             EasyGizmosView.GizmosShapes shapeValue = context.shape;
             float shapeSizeValue = shapeSize.floatValue;
             bool syncWithColliderValue = syncWithCollider.boolValue;
@@ -71,7 +70,7 @@ namespace EasyGizmos
             Vector3 shapeOffsetValue = shapeOffset.vector3Value;
 
             EditorGUI.BeginChangeCheck();
-            var showShapeValue = EditorGUILayout.Toggle("Show", showShape.boolValue);
+            showShapeValue = EditorGUILayout.Toggle("Show", showShape.boolValue);
 
             if (showShapeValue)
             {
@@ -104,6 +103,62 @@ namespace EasyGizmos
                 shapeOffset.vector3Value = shapeOffsetValue;
                 overrideShapeColor.boolValue = overrideShapeColorValue;
                 shapeColor.colorValue = shapeColorValue;
+                serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(target);
+            }
+        }
+
+        private void DrawTextProperties()
+        {
+            EditorGUILayout.LabelField("Text");
+            var showText = serializedObject.FindProperty("showText");
+            var overrideText = serializedObject.FindProperty("overrideText");
+            var text = serializedObject.FindProperty("text");
+            var textFontSize = serializedObject.FindProperty("textFontSize");
+            var overrideTextColor = serializedObject.FindProperty("overrideTextColor");
+            var textColor = serializedObject.FindProperty("textColor");
+            var textOffset = serializedObject.FindProperty("textOffset");
+
+            bool showTextValue = showText.boolValue;
+            bool overrideTextValue = overrideText.boolValue;
+            string textValue = text.stringValue;
+            int textFontSizeValue = textFontSize.intValue;
+            bool overrideTextColorValue = overrideTextColor.boolValue;
+            Color textColorValue = textColor.colorValue;
+            Vector3 textOffsetValue = textOffset.vector3Value;
+
+            EditorGUI.BeginChangeCheck();
+            showTextValue = EditorGUILayout.Toggle("Show", showText.boolValue);
+
+            if (showTextValue)
+            {
+                overrideTextValue = EditorGUILayout.Toggle("Override Text", overrideText.boolValue);
+
+                if (overrideTextValue)
+                {
+                    textValue = EditorGUILayout.TextField("Text", text.stringValue);
+                }
+
+                textFontSizeValue = EditorGUILayout.IntField("Font Size", textFontSize.intValue);
+                overrideTextColorValue = EditorGUILayout.Toggle("Override Color", overrideTextColor.boolValue);
+                if (overrideTextColorValue)
+                {
+                    textColorValue = EditorGUILayout.ColorField("Color", textColor.colorValue);
+                }
+
+                textOffsetValue = EditorGUILayout.Vector3Field("Offset", textOffset.vector3Value);
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(target, target.name + " params");
+                showText.boolValue = showTextValue;
+                overrideText.boolValue = overrideTextValue;
+                text.stringValue = textValue;
+                textFontSize.intValue = textFontSizeValue;
+                textOffset.vector3Value = textOffsetValue;
+                overrideTextColor.boolValue = overrideTextColorValue;
+                textColor.colorValue = textColorValue;
                 serializedObject.ApplyModifiedProperties();
                 EditorUtility.SetDirty(target);
             }
