@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EasyGizmos
 {
-    [InitializeOnLoad, CustomEditor(typeof(EasyGizmosView))]
+    [InitializeOnLoad, CustomEditor(typeof(EasyGizmosView)), CanEditMultipleObjects]
     public class EasyGizmosEditor : Editor
     {
         private EasyGizmosView context;

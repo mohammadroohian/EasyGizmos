@@ -119,12 +119,12 @@ namespace EasyGizmos
                 case GizmosShapes.Sphere:
                     Gizmos.DrawSphere(baseTransform.position + shapeOffset, shapeSize / 2);
                     break;
+                case GizmosShapes.WireSphere:
+                    Gizmos.DrawWireSphere(baseTransform.position + shapeOffset, shapeSize / 2);
+                    break;
                 case GizmosShapes.Cube:
                     Gizmos.DrawCube(baseTransform.position + shapeOffset,
                         new Vector3(shapeSize, shapeSize, shapeSize));
-                    break;
-                case GizmosShapes.WireSphere:
-                    Gizmos.DrawWireSphere(baseTransform.position + shapeOffset, shapeSize);
                     break;
                 case GizmosShapes.WireCube:
                     Gizmos.DrawWireCube(baseTransform.position + shapeOffset,
