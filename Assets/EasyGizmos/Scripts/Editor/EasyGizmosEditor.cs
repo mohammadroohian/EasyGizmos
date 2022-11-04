@@ -18,15 +18,23 @@ namespace EasyGizmos
         {
             serializedObject.Update();
 
-            // General Properties
-            EditorGUILayout.Space(5);
+            EditorGUILayout.Space(2);
             DrawGeneralProperties();
 
-            EditorGUILayout.Space(7);
+            EditorGUILayout.Space(5);
             DrawShapeProperties();
 
-            EditorGUILayout.Space(7);
+            EditorGUILayout.Space(5);
             DrawTextProperties();
+
+            EditorGUILayout.Space(5);
+            DrawIconProperties();
+
+            // EditorGUILayout.Space(5);
+            // DrawLineProperties();
+            //
+            // EditorGUILayout.Space(5);
+            // DrawFrustumProperties();
         }
 
         private void DrawGeneralProperties()
@@ -164,7 +172,35 @@ namespace EasyGizmos
             }
         }
 
+        private void DrawIconProperties()
+        {
+            EditorGUILayout.LabelField("Icon");
+            var showIcon = serializedObject.FindProperty("showIcon");
+            var iconOffset = serializedObject.FindProperty("iconOffset");
 
+            bool showIconValue = showIcon.boolValue;
+            Sprite icon = context.icon;
+            Vector3 iconOffsetValue = iconOffset.vector3Value;
+
+            EditorGUI.BeginChangeCheck();
+            showIconValue = EditorGUILayout.Toggle("Show", showIcon.boolValue);
+            if (showIconValue)
+            {
+                iconOffsetValue = EditorGUILayout.Vector3Field("Offset", iconOffset.vector3Value);
+                context.icon = (Sprite) EditorGUILayout.ObjectField("Icon", context.icon, typeof(Sprite), true);
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(target, target.name + "icon params");
+                showIcon.boolValue = showIconValue;
+                iconOffset.vector3Value = iconOffsetValue;
+                serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(target);
+            }
+        }
+
+       
         //////////////////////////////////////////////////////
         /// STATIC MEMBERS
         //////////////////////////////////////////////////////
