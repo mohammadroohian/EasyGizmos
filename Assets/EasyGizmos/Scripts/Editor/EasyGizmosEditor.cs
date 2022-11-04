@@ -30,9 +30,9 @@ namespace EasyGizmos
             EditorGUILayout.Space(5);
             DrawIconProperties();
 
-            // EditorGUILayout.Space(5);
-            // DrawLineProperties();
-            //
+            EditorGUILayout.Space(5);
+            DrawLineProperties();
+            
             // EditorGUILayout.Space(5);
             // DrawFrustumProperties();
         }
@@ -199,7 +199,51 @@ namespace EasyGizmos
                 EditorUtility.SetDirty(target);
             }
         }
+        
+         private void DrawLineProperties()
+        {
+            EditorGUILayout.LabelField("Line");
+            var showLine = serializedObject.FindProperty("showLine");
+            var overrideLineColor = serializedObject.FindProperty("overrideLineColor");
+            var lineColor = serializedObject.FindProperty("lineColor");
+            var lineOffset = serializedObject.FindProperty("lineOffset");
 
+            bool showLineValue = showLine.boolValue;
+            bool overrideLineColorValue = overrideLineColor.boolValue;
+            Color lineColorValue = lineColor.colorValue;
+            Vector3 lineOffsetValue = lineOffset.vector3Value;
+
+            EditorGUI.BeginChangeCheck();
+            showLineValue = EditorGUILayout.Toggle("Show", showLine.boolValue);
+
+            if (showLineValue)
+            {
+                context.lineStartPoint = (Transform) EditorGUILayout.ObjectField("Start Point",
+                    context.lineStartPoint, typeof(Transform), true);
+                context.lineEndPoint = (Transform) EditorGUILayout.ObjectField("End Point",
+                    context.lineEndPoint, typeof(Transform), true);
+
+                overrideLineColorValue = EditorGUILayout.Toggle("Override Color", overrideLineColor.boolValue);
+                if (overrideLineColorValue)
+                {
+                    lineColorValue = EditorGUILayout.ColorField("Color", lineColor.colorValue);
+                }
+
+                lineOffsetValue = EditorGUILayout.Vector3Field("Offset", lineOffset.vector3Value);
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(target, target.name + " params");
+                showLine.boolValue = showLineValue;
+                lineOffset.vector3Value = lineOffsetValue;
+                overrideLineColor.boolValue = overrideLineColorValue;
+                lineColor.colorValue = lineColorValue;
+                serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(target);
+            }
+        }
+         
        
         //////////////////////////////////////////////////////
         /// STATIC MEMBERS
