@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,10 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalColor: {r: 0.49803925, g: 0.83921576, b: 0.9921569, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 0
+  drawOnChildren: 0
+  showShape: 1
   shape: 1
-  shapeRadius: 1.86
+  mesh: {fileID: 0}
+  shapeSize: 2
   syncShapeWithCollider: 0
   overrideShapeColor: 0
   shapeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -181,8 +182,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &178359154
@@ -279,10 +280,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 1
+  drawOnChildren: 0
+  showShape: 1
   shape: 2
-  shapeRadius: 1.1
+  mesh: {fileID: 0}
+  shapeSize: 1
   syncShapeWithCollider: 0
   overrideShapeColor: 1
   shapeColor: {r: 0.6745098, g: 0.9921569, b: 0.35686275, a: 0.6}
@@ -306,8 +308,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &326969926
@@ -404,10 +406,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 1
+  drawOnChildren: 0
+  showShape: 1
   shape: 3
-  shapeRadius: 1.5
+  mesh: {fileID: 0}
+  shapeSize: 2
   syncShapeWithCollider: 0
   overrideShapeColor: 0
   shapeColor: {r: 0.46274513, g: 0.73333335, b: 1, a: 0.6}
@@ -431,8 +434,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &361835391
@@ -704,10 +707,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 1
+  drawOnChildren: 0
+  showShape: 1
   shape: 1
-  shapeRadius: 1.5
+  mesh: {fileID: 0}
+  shapeSize: 1
   syncShapeWithCollider: 0
   overrideShapeColor: 1
   shapeColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 0.5019608}
@@ -731,8 +735,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &1111320540
@@ -829,10 +833,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 1
+  drawOnChildren: 0
+  showShape: 1
   shape: 4
-  shapeRadius: 1.1
+  mesh: {fileID: 0}
+  shapeSize: 1
   syncShapeWithCollider: 0
   overrideShapeColor: 0
   shapeColor: {r: 0.49803922, g: 1, b: 0.83137256, a: 1}
@@ -856,8 +861,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &1357063658
@@ -1048,10 +1053,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalColor: {r: 0.9960785, g: 0.4666667, b: 0.7294118, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 0
+  drawOnChildren: 0
+  showShape: 1
   shape: 1
-  shapeRadius: 1.86
+  mesh: {fileID: 0}
+  shapeSize: 2
   syncShapeWithCollider: 0
   overrideShapeColor: 0
   shapeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1075,8 +1081,8 @@ MonoBehaviour:
   showFrustum: 1
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 1
-  frustumMaxRange: 4
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &1499597358
@@ -1173,16 +1179,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalColor: {r: 0.97647065, g: 0.8745099, b: 0.53333336, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 0
+  drawOnChildren: 0
+  showShape: 1
   shape: 1
-  shapeRadius: 1.86
+  mesh: {fileID: 0}
+  shapeSize: 2
   syncShapeWithCollider: 0
   overrideShapeColor: 0
   shapeColor: {r: 1, g: 1, b: 1, a: 1}
-  shapeOffset: {x: 0, y: 0, z: 0}
+  shapeOffset: {x: 0, y: 4.85, z: 0}
   showText: 1
-  overrideText: 1
+  overrideText: 0
   text: text
   textFontSize: 20
   overrideTextColor: 0
@@ -1200,8 +1207,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &1855779948
