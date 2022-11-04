@@ -32,9 +32,9 @@ namespace EasyGizmos
 
             EditorGUILayout.Space(5);
             DrawLineProperties();
-            
-            // EditorGUILayout.Space(5);
-            // DrawFrustumProperties();
+
+            EditorGUILayout.Space(5);
+            DrawFrustumProperties();
         }
 
         private void DrawGeneralProperties()
@@ -199,8 +199,8 @@ namespace EasyGizmos
                 EditorUtility.SetDirty(target);
             }
         }
-        
-         private void DrawLineProperties()
+
+        private void DrawLineProperties()
         {
             EditorGUILayout.LabelField("Line");
             var showLine = serializedObject.FindProperty("showLine");
@@ -243,8 +243,58 @@ namespace EasyGizmos
                 EditorUtility.SetDirty(target);
             }
         }
-         
-       
+
+        private void DrawFrustumProperties()
+        {
+            EditorGUILayout.LabelField("Frustum");
+            var showFrustum = serializedObject.FindProperty("showFrustum");
+            var frustumFov = serializedObject.FindProperty("frustumFov");
+            var frustumAspect = serializedObject.FindProperty("frustumAspect");
+            var frustumNearPlane = serializedObject.FindProperty("frustumNearPlane");
+            var frustumFarPlane = serializedObject.FindProperty("frustumFarPlane");
+            var overrideFrustumColor = serializedObject.FindProperty("overrideFrustumColor");
+            var frustumColor = serializedObject.FindProperty("frustumColor");
+
+            bool showFrustumValue = showFrustum.boolValue;
+            bool overrideFrustumColorValue = overrideFrustumColor.boolValue;
+            Color frustumColorValue = frustumColor.colorValue;
+            float frustumFovValue = frustumFov.floatValue;
+            float frustumAspectValue = frustumAspect.floatValue;
+            float frustumNearPlaneValue = frustumNearPlane.floatValue;
+            float frustumFarPlaneValue = frustumFarPlane.floatValue;
+
+            EditorGUI.BeginChangeCheck();
+            showFrustumValue = EditorGUILayout.Toggle("Show", showFrustum.boolValue);
+
+            if (showFrustumValue)
+            {
+                frustumFovValue = EditorGUILayout.FloatField("Field of View", frustumFov.floatValue);
+                frustumAspectValue = EditorGUILayout.FloatField("Aspect", frustumAspect.floatValue);
+                frustumNearPlaneValue = EditorGUILayout.FloatField("Near", frustumNearPlane.floatValue);
+                frustumFarPlaneValue = EditorGUILayout.FloatField("Far", frustumFarPlane.floatValue);
+
+                overrideFrustumColorValue = EditorGUILayout.Toggle("Override Color", overrideFrustumColor.boolValue);
+                if (overrideFrustumColorValue)
+                {
+                    frustumColorValue = EditorGUILayout.ColorField("Color", frustumColor.colorValue);
+                }
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(target, target.name + " params");
+                showFrustum.boolValue = showFrustumValue;
+                overrideFrustumColor.boolValue = overrideFrustumColorValue;
+                frustumColor.colorValue = frustumColorValue;
+                frustumFov.floatValue = frustumFovValue;
+                frustumAspect.floatValue = frustumAspectValue;
+                frustumNearPlane.floatValue = frustumNearPlaneValue;
+                frustumFarPlane.floatValue = frustumFarPlaneValue;
+                serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(target);
+            }
+        }
+
         //////////////////////////////////////////////////////
         /// STATIC MEMBERS
         //////////////////////////////////////////////////////
