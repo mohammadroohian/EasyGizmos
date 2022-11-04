@@ -19,17 +19,94 @@ namespace EasyGizmos
             serializedObject.Update();
 
             // General Properties
+            EditorGUILayout.Space(5);
+            DrawGeneralProperties();
 
-            EditorGUILayout.LabelField("General");
-            context.generalColor = EditorGUILayout.ColorField("Color", context.generalColor);
-            context.drawOnItself = EditorGUILayout.Toggle("Draw On Itself", context.drawOnItself);
-            context.drawOnChildren = EditorGUILayout.Toggle("Draw On Children", context.drawOnChildren);
+            EditorGUILayout.Space(7);
+            DrawShapeProperties();
 
-            // Shape Properties
             // Text Properties
             // Icon Properties
             // Line Properties
             // Frustum Properties
+        }
+
+        private void DrawGeneralProperties()
+        {
+            EditorGUILayout.LabelField("General");
+            var generalColor = serializedObject.FindProperty("generalColor");
+            var drawOnItself = serializedObject.FindProperty("drawOnItself");
+            var drawOnChildren = serializedObject.FindProperty("drawOnChildren");
+
+            EditorGUI.BeginChangeCheck();
+            var generalColorValue = EditorGUILayout.ColorField("General Color", generalColor.colorValue);
+            var drawOnItselfValue = EditorGUILayout.Toggle("Draw On Itself", drawOnItself.boolValue);
+            var drawOnChildrenValue = EditorGUILayout.Toggle("Draw On Children", drawOnChildren.boolValue);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(target, target.name + " params");
+                generalColor.colorValue = generalColorValue;
+                drawOnItself.boolValue = drawOnItselfValue;
+                drawOnChildren.boolValue = drawOnChildrenValue;
+                serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(target);
+            }
+        }
+
+        private void DrawShapeProperties()
+        {
+            EditorGUILayout.LabelField("Shape");
+            var showShape = serializedObject.FindProperty("showShape");
+            var shapeSize = serializedObject.FindProperty("shapeSize");
+            var syncWithCollider = serializedObject.FindProperty("syncShapeWithCollider");
+            var overrideShapeColor = serializedObject.FindProperty("overrideShapeColor");
+            var shapeColor = serializedObject.FindProperty("shapeColor");
+            var shapeOffset = serializedObject.FindProperty("shapeOffset");
+
+            EasyGizmosView.GizmosShapes shapeValue = context.shape;
+            float shapeSizeValue = shapeSize.floatValue;
+            bool syncWithColliderValue = syncWithCollider.boolValue;
+            bool overrideShapeColorValue = overrideShapeColor.boolValue;
+            Color shapeColorValue = shapeColor.colorValue;
+            Vector3 shapeOffsetValue = shapeOffset.vector3Value;
+
+            EditorGUI.BeginChangeCheck();
+            var showShapeValue = EditorGUILayout.Toggle("Show", showShape.boolValue);
+
+            if (showShapeValue)
+            {
+                shapeValue = (EasyGizmosView.GizmosShapes) EditorGUILayout.EnumPopup("Shape", context.shape);
+
+                if (shapeValue == EasyGizmosView.GizmosShapes.Mesh ||
+                    shapeValue == EasyGizmosView.GizmosShapes.WireMesh)
+                {
+                    context.mesh = (Mesh) EditorGUILayout.ObjectField("Custom Shape", context.mesh, typeof(Mesh), true);
+                }
+
+                shapeSizeValue = EditorGUILayout.FloatField("Size", shapeSize.floatValue);
+                syncWithColliderValue = EditorGUILayout.Toggle("Sync With Collider", syncWithCollider.boolValue);
+                shapeOffsetValue = EditorGUILayout.Vector3Field("Offset", shapeOffset.vector3Value);
+
+                overrideShapeColorValue = EditorGUILayout.Toggle("Override Color", overrideShapeColor.boolValue);
+                if (overrideShapeColorValue)
+                {
+                    shapeColorValue = EditorGUILayout.ColorField("Color", shapeColor.colorValue);
+                }
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(target, target.name + " params");
+                showShape.boolValue = showShapeValue;
+                context.shape = shapeValue;
+                shapeSize.floatValue = shapeSizeValue;
+                syncWithCollider.boolValue = syncWithColliderValue;
+                shapeOffset.vector3Value = shapeOffsetValue;
+                overrideShapeColor.boolValue = overrideShapeColorValue;
+                shapeColor.colorValue = shapeColorValue;
+                serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(target);
+            }
         }
 
 

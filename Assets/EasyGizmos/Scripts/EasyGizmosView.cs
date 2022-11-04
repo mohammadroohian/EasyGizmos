@@ -12,7 +12,8 @@ namespace EasyGizmos
             Cube = 2,
             WireSphere = 3,
             WireCube = 4,
-            Custom = 5
+            Mesh = 5,
+            WireMesh = 6
         }
 
         public Color generalColor = Color.white;
@@ -22,7 +23,7 @@ namespace EasyGizmos
         public bool showShape = true;
         public GizmosShapes shape = GizmosShapes.Sphere;
         public Mesh mesh;
-        public float shapeRadius = 0.3f;
+        public float shapeSize = 0.3f;
         public bool syncShapeWithCollider = false;
         public bool overrideShapeColor = false;
         public Color shapeColor = Color.white;
@@ -105,8 +106,8 @@ namespace EasyGizmos
 
             if (syncShapeWithCollider)
             {
-                shapeRadius = sc != null ? sc.radius : shapeRadius;
-                shapeRadius = bc != null ? bc.radius : shapeRadius;
+                shapeSize = sc != null ? sc.radius : shapeSize;
+                shapeSize = bc != null ? bc.radius : shapeSize;
 
                 if (sc != null) shapeOffset = sc.center;
                 if (bc != null) shapeOffset = bc.center;
@@ -116,18 +117,26 @@ namespace EasyGizmos
             switch (shape)
             {
                 case GizmosShapes.Sphere:
-                    Gizmos.DrawSphere(baseTransform.position + shapeOffset, shapeRadius);
+                    Gizmos.DrawSphere(baseTransform.position + shapeOffset, shapeSize / 2);
                     break;
                 case GizmosShapes.Cube:
                     Gizmos.DrawCube(baseTransform.position + shapeOffset,
-                        new Vector3(shapeRadius * 2, shapeRadius * 2, shapeRadius * 2));
+                        new Vector3(shapeSize, shapeSize, shapeSize));
                     break;
                 case GizmosShapes.WireSphere:
-                    Gizmos.DrawWireSphere(baseTransform.position + shapeOffset, shapeRadius);
+                    Gizmos.DrawWireSphere(baseTransform.position + shapeOffset, shapeSize);
                     break;
                 case GizmosShapes.WireCube:
                     Gizmos.DrawWireCube(baseTransform.position + shapeOffset,
-                        new Vector3(shapeRadius * 2, shapeRadius * 2, shapeRadius * 2));
+                        new Vector3(shapeSize, shapeSize, shapeSize));
+                    break;
+                case GizmosShapes.Mesh:
+                    Gizmos.DrawMesh(mesh, baseTransform.position + shapeOffset, Quaternion.identity,
+                        new Vector3(shapeSize, shapeSize, shapeSize));
+                    break;
+                case GizmosShapes.WireMesh:
+                    Gizmos.DrawWireMesh(mesh, baseTransform.position + shapeOffset, Quaternion.identity,
+                        new Vector3(shapeSize, shapeSize, shapeSize));
                     break;
             }
         }
