@@ -1,13 +1,8 @@
 {
   "name": "com.easygizmos.unity",
-  "displayName": "Easy Gizmoz",
+  "displayName": "Easy Gizmos",
   "version": "1.0.0",
   "unity": "2019.1",
-  "author": {
-    "name": "Seyed Moein Saadati",
-    "email": "saadatimoin@gmail.com",
-    "url": "https://seyedmoeinsaadati.github.io/"
-  },
   "description": "",
   "keywords": [
     "Gizmos"
