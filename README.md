@@ -1,7 +1,7 @@
 # Easy Gizmos Unity Package
-<img src="https://github.com/seyedmoeinsaadati/com.easygizmos.unity/blob/upm_independent/media/unitylogo.png" align="right" height="50px">
+<img src="https://github.com/mohammadroohian/EasyGizmos/tree/upm_independent/media/unitylogo.png" align="right" height="50px" alt="">
 
-![](https://img.shields.io/static/v1?label=Version&message=1.8.80&color=brightgreen)
+![](https://img.shields.io/static/v1?label=Version&message=1.0.0&color=brightgreen)
 
 
 
@@ -9,7 +9,7 @@
 
 1. Open Unity package manager
 2. Click on plus button
-3. Select "Add package from git URL" and enter repo URL.
+3. Select "Add package from git URL" and enter https://github.com/mohammadroohian/EasyGizmos.git#upm_independent
 
 ​
 
