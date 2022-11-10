@@ -1,0 +1,27 @@
+{
+  "name": "com.moein.unity",
+  "displayName": "Easy Gizmoz",
+  "version": "1.0.0",
+  "unity": "2019.1",
+  "author": {
+    "name": "Seyed Moein Saadati",
+    "email": "saadatimoin@gmail.com",
+    "url": "https://seyedmoeinsaadati.github.io/"
+  },
+  "description": "",
+  "keywords": [
+    "Gizmos"
+  ],
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seyedmoeinsaadati/com.moein.unity.git"
+  },
+  "samples": [
+    {
+      "displayName": "Samples",
+      "description": "",
+      "path": "Samples/"
+    }
+  ]
+}
