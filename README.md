@@ -1,5 +1,5 @@
 # Easy Gizmos Unity Package
-<img src="https://github.com/mohammadroohian/EasyGizmos/tree/upm_independent/media/unitylogo.png" align="right" height="50px" alt="">
+<img src="https://github.com/mohammadroohian/EasyGizmos/blob/upm_independent/media/unitylogo.png" align="right" height="50px" alt="">
 
 ![](https://img.shields.io/static/v1?label=Version&message=1.0.0&color=brightgreen)
 
