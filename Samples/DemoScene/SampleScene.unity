@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -149,29 +149,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 178359152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a4a6cfb07767246adcffdc70883865, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d45dfa274f54645bf3af73b78b0049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalColor: {r: 0.49803925, g: 0.83921576, b: 0.9921569, a: 1}
+  generalColor: {r: 1, g: 1, b: 1, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 0
+  drawOnChildren: 0
+  showShape: 1
   shape: 1
-  shapeRadius: 1.86
+  mesh: {fileID: 0}
+  shapeSize: 1.83
   syncShapeWithCollider: 0
   overrideShapeColor: 0
   shapeColor: {r: 1, g: 1, b: 1, a: 1}
   shapeOffset: {x: 0, y: 0, z: 0}
-  showText: 1
-  overrideText: 1
-  text: icon
+  showText: 0
+  overrideText: 0
+  text: 
   textFontSize: 20
   overrideTextColor: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  textOffset: {x: 0, y: 4, z: 0}
-  showIcon: 1
-  icon: {fileID: 21300000, guid: ca2183548aedb3944b8060418ec80a2d, type: 3}
-  iconOffset: {x: 0, y: 2, z: 0}
+  textOffset: {x: 0, y: 1, z: 0}
+  showIcon: 0
+  icon: {fileID: 0}
+  iconOffset: {x: 0, y: 0, z: 0}
   showLine: 0
   lineStartPoint: {fileID: 0}
   lineEndPoint: {fileID: 0}
@@ -181,8 +182,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &178359154
@@ -274,28 +275,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 326969924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a4a6cfb07767246adcffdc70883865, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d45dfa274f54645bf3af73b78b0049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 1}
+  generalColor: {r: 1, g: 1, b: 1, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 1
-  shape: 2
-  shapeRadius: 1.1
+  drawOnChildren: 1
+  showShape: 0
+  shape: 1
+  mesh: {fileID: 0}
+  shapeSize: 0.3
   syncShapeWithCollider: 0
-  overrideShapeColor: 1
-  shapeColor: {r: 0.6745098, g: 0.9921569, b: 0.35686275, a: 0.6}
+  overrideShapeColor: 0
+  shapeColor: {r: 1, g: 1, b: 1, a: 1}
   shapeOffset: {x: 0, y: 0, z: 0}
   showText: 1
   overrideText: 1
-  text: shape
+  text: With Children
   textFontSize: 20
   overrideTextColor: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  textOffset: {x: 0, y: 3, z: 0}
+  textOffset: {x: 0, y: 1, z: 0}
   showIcon: 0
-  icon: {fileID: 0}
+  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   iconOffset: {x: 0, y: 0, z: 0}
   showLine: 0
   lineStartPoint: {fileID: 0}
@@ -306,8 +308,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &326969926
@@ -367,7 +369,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1861946845}
+  - {fileID: 562628690}
+  - {fileID: 1485357423}
+  - {fileID: 1748986164}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -399,26 +405,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 361835389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a4a6cfb07767246adcffdc70883865, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d45dfa274f54645bf3af73b78b0049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 1}
+  generalColor: {r: 0, g: 0, b: 0, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 1
-  shape: 3
-  shapeRadius: 1.5
+  drawOnChildren: 0
+  showShape: 1
+  shape: 6
+  mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  shapeSize: 1.79
   syncShapeWithCollider: 0
   overrideShapeColor: 0
-  shapeColor: {r: 0.46274513, g: 0.73333335, b: 1, a: 0.6}
+  shapeColor: {r: 1, g: 1, b: 1, a: 1}
   shapeOffset: {x: 0, y: 0, z: 0}
-  showText: 1
-  overrideText: 1
-  text: shape
+  showText: 0
+  overrideText: 0
+  text: 
   textFontSize: 20
   overrideTextColor: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  textOffset: {x: 0, y: 3, z: 0}
+  textOffset: {x: 0, y: 1, z: 0}
   showIcon: 0
   icon: {fileID: 0}
   iconOffset: {x: 0, y: 0, z: 0}
@@ -431,8 +438,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &361835391
@@ -495,6 +502,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &562628689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 562628690}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &562628690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562628689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 326969928}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -699,40 +736,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 1111320538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a4a6cfb07767246adcffdc70883865, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d45dfa274f54645bf3af73b78b0049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 1}
+  generalColor: {r: 1, g: 1, b: 1, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 1
-  shape: 1
-  shapeRadius: 1.5
+  drawOnChildren: 0
+  showShape: 1
+  shape: 5
+  mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  shapeSize: 1.52
   syncShapeWithCollider: 0
-  overrideShapeColor: 1
-  shapeColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 0.5019608}
-  shapeOffset: {x: 0, y: 0, z: 0}
-  showText: 1
-  overrideText: 1
-  text: shape
+  overrideShapeColor: 0
+  shapeColor: {r: 1, g: 1, b: 1, a: 1}
+  shapeOffset: {x: 0, y: -1.47, z: 0}
+  showText: 0
+  overrideText: 0
+  text: 
   textFontSize: 20
   overrideTextColor: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  textOffset: {x: 0, y: 3, z: 0}
+  textOffset: {x: 0, y: 1, z: 0}
   showIcon: 0
   icon: {fileID: 0}
   iconOffset: {x: 0, y: 0, z: 0}
-  showLine: 0
-  lineStartPoint: {fileID: 0}
-  lineEndPoint: {fileID: 0}
+  showLine: 1
+  lineStartPoint: {fileID: 1111320542}
+  lineEndPoint: {fileID: 361835393}
   lineOffset: {x: 0, y: 0, z: 0}
-  lineColor: {r: 1, g: 1, b: 1, a: 1}
-  overrideLineColor: 0
+  lineColor: {r: 0.91330194, g: 0, b: 1, a: 1}
+  overrideLineColor: 1
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &1111320540
@@ -824,26 +862,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1357063656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a4a6cfb07767246adcffdc70883865, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d45dfa274f54645bf3af73b78b0049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalColor: {r: 0.6745098, g: 0.98823535, b: 0.35686275, a: 1}
+  generalColor: {r: 1, g: 1, b: 1, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 1
-  shape: 4
-  shapeRadius: 1.1
+  drawOnChildren: 0
+  showShape: 1
+  shape: 1
+  mesh: {fileID: 0}
+  shapeSize: 0.3
   syncShapeWithCollider: 0
   overrideShapeColor: 0
-  shapeColor: {r: 0.49803922, g: 1, b: 0.83137256, a: 1}
+  shapeColor: {r: 1, g: 1, b: 1, a: 1}
   shapeOffset: {x: 0, y: 0, z: 0}
-  showText: 1
-  overrideText: 1
-  text: shape
+  showText: 0
+  overrideText: 0
+  text: 
   textFontSize: 20
   overrideTextColor: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  textOffset: {x: 0, y: 3, z: 0}
+  textOffset: {x: 0, y: 1, z: 0}
   showIcon: 0
   icon: {fileID: 0}
   iconOffset: {x: 0, y: 0, z: 0}
@@ -853,13 +892,13 @@ MonoBehaviour:
   lineOffset: {x: 0, y: 0, z: 0}
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   overrideLineColor: 0
-  showFrustum: 0
-  frustumFov: 60
+  showFrustum: 1
+  frustumFov: 62.41
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
-  overrideFrustumColor: 0
-  frustumColor: {r: 1, g: 1, b: 1, a: 1}
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2.19
+  overrideFrustumColor: 1
+  frustumColor: {r: 0, g: 1, b: 0.020439148, a: 1}
 --- !u!23 &1357063658
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -920,6 +959,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1485357422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485357423}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1485357423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485357422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 326969928}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1496416058
 GameObject:
@@ -1043,40 +1112,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 1499597356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a4a6cfb07767246adcffdc70883865, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d45dfa274f54645bf3af73b78b0049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalColor: {r: 0.9960785, g: 0.4666667, b: 0.7294118, a: 1}
+  generalColor: {r: 1, g: 1, b: 1, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 0
+  drawOnChildren: 0
+  showShape: 1
   shape: 1
-  shapeRadius: 1.86
+  mesh: {fileID: 0}
+  shapeSize: 0.3
   syncShapeWithCollider: 0
   overrideShapeColor: 0
   shapeColor: {r: 1, g: 1, b: 1, a: 1}
   shapeOffset: {x: 0, y: 0, z: 0}
-  showText: 1
-  overrideText: 1
-  text: frustum
+  showText: 0
+  overrideText: 0
+  text: 
   textFontSize: 20
   overrideTextColor: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  textOffset: {x: 0, y: 3, z: 0}
+  textOffset: {x: 0, y: 1, z: 0}
   showIcon: 0
-  icon: {fileID: 21300000, guid: df80bf20a6c90c248b9f956c261091a5, type: 3}
-  iconOffset: {x: 0, y: 2, z: 0}
+  icon: {fileID: 0}
+  iconOffset: {x: 0, y: 0, z: 0}
   showLine: 0
   lineStartPoint: {fileID: 0}
   lineEndPoint: {fileID: 0}
   lineOffset: {x: 0, y: 0, z: 0}
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   overrideLineColor: 0
-  showFrustum: 1
+  showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 1
-  frustumMaxRange: 4
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &1499597358
@@ -1140,6 +1210,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1748986163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748986164}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1748986164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748986163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.17, y: 0, z: 2.24}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 326969928}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855779946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,26 +1268,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1855779946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a4a6cfb07767246adcffdc70883865, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d45dfa274f54645bf3af73b78b0049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalColor: {r: 0.97647065, g: 0.8745099, b: 0.53333336, a: 1}
+  generalColor: {r: 1, g: 0, b: 0, a: 1}
   drawOnItself: 1
-  drawOnChilds: 0
-  showSape: 0
-  shape: 1
-  shapeRadius: 1.86
+  drawOnChildren: 0
+  showShape: 1
+  shape: 4
+  mesh: {fileID: 0}
+  shapeSize: 1.41
   syncShapeWithCollider: 0
   overrideShapeColor: 0
   shapeColor: {r: 1, g: 1, b: 1, a: 1}
-  shapeOffset: {x: 0, y: 0, z: 0}
+  shapeOffset: {x: 0, y: 1.69, z: 0}
   showText: 1
-  overrideText: 1
-  text: text
+  overrideText: 0
+  text: 
   textFontSize: 20
-  overrideTextColor: 0
-  textColor: {r: 1, g: 1, b: 1, a: 1}
-  textOffset: {x: 0, y: 2.44, z: 0}
+  overrideTextColor: 1
+  textColor: {r: 1, g: 0.7764142, b: 0, a: 1}
+  textOffset: {x: 1, y: 3.56, z: 0}
   showIcon: 0
   icon: {fileID: 0}
   iconOffset: {x: 0, y: 0, z: 0}
@@ -1200,8 +1301,8 @@ MonoBehaviour:
   showFrustum: 0
   frustumFov: 60
   frustumAspect: 1
-  frustumMinRange: 0.3
-  frustumMaxRange: 2
+  frustumNearPlane: 0.3
+  frustumFarPlane: 2
   overrideFrustumColor: 0
   frustumColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &1855779948
@@ -1264,4 +1365,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1861946844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1861946845}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1861946845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861946844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.75, y: 0, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 326969928}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
